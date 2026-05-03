@@ -103,6 +103,24 @@
       color: #4e372a;
     }
 
+    .environment-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(44, 122, 155, 0.16);
+      background: rgba(44, 122, 155, 0.08);
+      color: #23485c;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .environment-banner strong {
+      color: var(--bar-deep);
+    }
+
     .rule-chip {
       display: inline-flex;
       align-items: center;
@@ -529,6 +547,11 @@
           왼쪽 막대의 값이 오른쪽 막대보다 크면, 두 막대의 위치를 교환합니다.
         </div>
 
+        <div class="environment-banner" id="environmentBanner">
+          <strong>실행 환경</strong>
+          <span id="environmentText">브라우저 미리보기</span>
+        </div>
+
         <div class="controls">
           <div class="button-row">
             <button class="primary" id="startButton" type="button">Bubble Sort 시작</button>
@@ -639,6 +662,7 @@
     const pairDisplay = document.getElementById("pairDisplay");
     const storyTitle = document.getElementById("storyTitle");
     const storyMessage = document.getElementById("storyMessage");
+    const environmentText = document.getElementById("environmentText");
 
     const barNodes = new Map();
 
@@ -843,6 +867,21 @@
       rebuildBars();
     }
 
+    function applyRuntimeBanner() {
+      if (window.desktopApp?.isElectron) {
+        const platformLabels = {
+          darwin: "macOS",
+          linux: "Linux",
+          win32: "Windows"
+        };
+        const platform = platformLabels[window.desktopApp.platform] || window.desktopApp.platform;
+        const electronVersion = window.desktopApp.versions?.electron || "-";
+        environmentText.textContent = `Electron Desktop (${platform}) · v${electronVersion}`;
+      } else {
+        environmentText.textContent = "브라우저 미리보기";
+      }
+    }
+
     async function bubbleSort() {
       if (state.sorting) {
         return;
@@ -976,6 +1015,7 @@
       });
     });
 
+    applyRuntimeBanner();
     updateSpeedLabel();
     resetStateForNewDataset();
   </script>

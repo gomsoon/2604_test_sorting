@@ -1,0 +1,19 @@
+{
+  "name": "2604-test-sorting",
+  "version": "0.1.0",
+  "description": "Electron-based sorting visualizer prototype",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "electron",
+    "sorting",
+    "visualizer"
+  ],
+  "author": "Sunghae Kim",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^41.5.0"
+  }
+}

@@ -37,4 +37,23 @@ The current functional artifact is a single-file sorting visualizer in [index.ht
 
 ## Current Run Mode
 
-At the moment, the project can be viewed by opening [index.html](./index.html) in a browser. Electron project files have not been added yet.
+The project can now be run in two lightweight ways:
+
+- open [index.html](./index.html) directly in a browser
+- run the Electron shell locally after installing dependencies
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the Electron app:
+
+```bash
+npm start
+```
+
+The initial Electron bootstrap keeps the current single-file visualizer intact and loads it through `main.js` with a minimal `preload.js` bridge.

@@ -8,6 +8,13 @@ This document defines how the project should be developed across multiple local 
 
 GitHub should be treated as the primary synchronization source across environments.
 
+The initial implementation sequence for this project is:
+
+1. bootstrap and validate the Electron shell on Linux
+2. push the working baseline to GitHub
+3. pull and verify the same baseline on Windows
+4. continue feature work with small synchronized changes
+
 The recommended flow is:
 
 1. pull before starting work
